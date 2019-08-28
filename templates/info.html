@@ -1,0 +1,30 @@
+{% extends 'layout.html' %}
+{% block body %}
+
+<div class="page-header">
+  <h1>{{info.name}}</h1>
+</div>
+<small>Address : {{info.speciality}}</small><br>
+
+{% from "_formhelpers.html" import render_field %}
+<div class="container">
+<form action="" method="POST">
+{{ form.csrf }}
+  <div class='form-group'>
+    {{render_field(form.comment,class="form-control")}}
+  </div>
+  <p><input type="submit" class='btn btn-success' value='submit'> <a href='/doctors' class='btn btn-primary'>back</a></p>
+</form>
+</div>
+
+<div class="container">
+{%for review in reviews %}
+<ul class="list-group">
+  <li class="list-group-item">
+    {{review.review}}
+  </li>
+{%endfor%}
+</div>
+
+
+{% endblock  %}

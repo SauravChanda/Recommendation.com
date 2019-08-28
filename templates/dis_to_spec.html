@@ -1,0 +1,40 @@
+{% extends 'layoutadmin.html' %}
+{% block body %}
+    <div class="container">
+      <br>
+      <h1>Admin</h1><br>
+      <h2>Disease to speciality mapping</h2>
+      <table class="table table-striped">
+      <thead>
+      <tr>
+      <td>Disease</td>
+      <td>Current speciality</td>
+      <td>Update speciality</td>
+      <td>Update</td>
+      </tr>
+      </thead>
+      <tbody>
+      {% for disease in diseases %}
+      <form method="POST" action="http://localhost:5000/admin">
+      <tr>
+      <td>{{disease}}</td>
+      <td>{% for d in dis_spec %}
+          {% if d.disease==disease %}
+              {{d.speciality}}
+          {% endif %}
+          {% endfor %}
+      </td>
+      <td><select name="{{disease}}" class="form-control" >
+      {% for s in speciality %}
+      <option value="{{s.speciality}}">{{s.speciality}}</option>
+      {% endfor %}
+      </select></td>
+      <td><input class="btn btn-success" type="submit" value="Update"></td>
+      </tr>
+    </form>
+    {% endfor %}
+    </tbody>
+    </table>
+    <br>
+    </div>
+{% endblock  %}

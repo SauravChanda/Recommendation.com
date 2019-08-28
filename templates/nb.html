@@ -1,0 +1,27 @@
+{% extends 'layoutadmin.html' %}
+{% block body %}
+
+
+
+<div class="container">
+        <br>
+        <div class="page-header"> <h1>Naive Bayes Classifier</h1> </div>
+        <a class="btn btn-primary btn-lg" href="nb/fit">RUN</a></br></br>
+
+        <table class='table table-striped'>
+        <tr>
+        <th>ID</th>
+        <th>NAME</th>
+        <th>SCORE</th>
+        </tr>
+        {% for r in result %}
+        <tr>
+                <td>{{ r.id }}</td>
+                <td>{{ r.name }}</td>
+                <td>{{ r.total_liked}}</td>
+        </tr>
+        {% endfor %}
+        </table>
+
+</div>
+{% endblock  %}

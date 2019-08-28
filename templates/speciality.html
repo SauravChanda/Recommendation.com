@@ -1,0 +1,39 @@
+{% extends 'layout.html' %}
+{% block body %}
+
+<div class="container">  
+{% from "_formhelpers.html" import render_field %}  
+<br>                          
+<form method="POST">
+<div class="form-group">
+   {{render_field(form.speciality,class="form-control")}}
+</div>
+<div class="form-group">
+  <input type="submit" class="btn btn-success">
+</div>
+</form>
+
+{% if result != None%}
+{% if  result|length !=0 %}
+<h3>Your recomended doctors are</h3>
+<table class="table table-striped">
+<tr>
+  <th>Name</th>
+  <th>Address</th>
+  <th>Phone</th>
+</tr>
+  {% for r in result %}
+  <tr>
+    <td>{{r.name}}</td>
+    <td>{{r.address}}</td>
+    <td>{{r.phone}}</td>
+  <tr>
+  {% endfor %}
+  
+</table>
+{% else %}
+<h5>No results Found<h5>
+{% endif %}
+{% endif %}
+</div>
+{% endblock  %}

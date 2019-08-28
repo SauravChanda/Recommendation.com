@@ -1,0 +1,22 @@
+{% extends 'layoutadmin.html' %}
+{% block body %}
+<div class="page-header">
+  <h1>RANK TABLE</h1>
+</div>
+<div class="container">
+<table class='table table-stripped'>
+<tr>
+  <th>ID</th>
+  <th>NAME</th>
+  <th>SCORE</th>
+</tr>
+{% for r in result %}
+<tr>
+            <td>{{ r.id }}</td>
+            <td>{{ r.name }}</td>
+            <td>{{ r.total_liked}}</td>
+</tr>
+{% endfor %}
+</table>
+</div>
+{% endblock  %}
